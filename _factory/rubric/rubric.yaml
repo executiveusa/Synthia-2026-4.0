@@ -35,6 +35,9 @@ profiles:
       - mobile horizontal overflow
       - missing rollback
       - missing owner approval
+      - action named in the lock with no visible control
+      - sample counts or totals that do not add up
+      - same value shown differently in two places
 
   video:               # W4, W6
     status: v0-uncalibrated   # weights are a starting point; recalibrate after 5 delivered jobs

@@ -12,6 +12,7 @@
 | Website Trust Audit checklist | W1 audit criteria; client autonomy and handover in 07_deliver |
 | grill-me skill (`skills/grill-me`) | 00_lock interview method |
 | HEART_AND_SOUL v4 | doctrine and decision order |
+| Design Creativity Bench (Kombai preprint, arXiv:2610.11539v2) | design-space table, structural (not cosmetic) directions, sameness check against `STRUCTURE_LOG.md`, correctness checks in 05 — see `_factory/knowledge/design-creativity-bench.md` |
 
 The uploaded file `marketing_ai_team_skill.md` contained the grill-me skill, not a
 marketing skill. It now lives at `skills/grill-me/SKILL.md`.

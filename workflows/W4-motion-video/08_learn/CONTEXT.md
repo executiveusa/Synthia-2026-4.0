@@ -13,6 +13,7 @@ Do NOT load: other projects.
 3. Case study only with written client permission.
 
 ## Outputs
+- one row in `_factory/learn/STRUCTURE_LOG.md` (structural answers only, no client content)
 - LEARN.md → output/
 
 ## Human check
