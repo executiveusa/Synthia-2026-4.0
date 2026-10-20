@@ -1,0 +1,56 @@
+# Synthia™ anti-slop registry — one list, referenced by every 05_gauntlet.
+# Machine checks run first (The Extractor). Judgment checks are for the reviewer.
+
+machine:
+  tool: the-extractor          # upstream/the-extractor, pinned in upstream/UPSTREAM.md
+  command: "node upstream/the-extractor/extractor.mjs audit <file|url> --format json"
+  pass_rule: "zero high-severity findings; every medium finding fixed or justified in writing"
+  rules_used:                  # rule IDs as defined in the-extractor rules/*.json
+    copy: [X-C01 generic elevation claim, X-C02 thoughtfully-designed filler,
+           X-C03 difference without evidence, X-C04 journey/experience staging,
+           X-C05 portable premium adjective, X-C06 not-just/but construction,
+           X-C07 unanchored superlative, X-C08 generic CTA]
+    ui: [X-U01 gradient-as-default, X-U02 rounded-card saturation, X-U03 generic reveal animation]
+
+judgment:
+  copy:            # Website Governor v1 §9
+    - vague abstraction or corporate filler
+    - empty superlative or adjective stack
+    - repeated section framing
+    - fake urgency or fake intimacy
+    - meta-copy describing the interface instead of helping
+    - claim with no evidence behind it
+  visual:          # Collins v1.1 cliché list + Governor §13
+    - generic centered hero that could belong to a competitor
+    - purple-blue gradient as the identity
+    - glassmorphism without a reason
+    - floating dashboard mockup
+    - three-card feature row by default
+    - default bento grid
+    - pill shapes everywhere
+    - unrelated stock or generated imagery
+    - card inside card inside card
+    - equal-weight sections with no hierarchy
+    - decorative 3D spheres, AI-brain imagery
+    - endless marquee, arbitrary parallax
+    - typography chosen only because it reads as luxury
+  motion:          # Governor §12
+    - scroll hijacking
+    - long intro blocking content
+    - text reveals that slow reading
+    - motion on every section
+    - essential information behind hover
+    - two unrelated motion languages on one page
+    - no reduced-motion alternative
+  video:           # distilled from the AI-video prompting guide, see _factory/video
+    - several conflicting styles in one piece
+    - mixed moods in one shot
+    - continuous-motion model asked to fake hard cuts
+    - over-specified faces causing artifacts
+    - text on screen too small to read on a phone
+
+review_required:   # see canon SOURCES #6 and #7 — owner decision pending
+  fonts: [Inter, Roboto, Arial, Helvetica, Open Sans, Montserrat, Poppins, Lato]
+  note: "Flag for review; not an automatic blocker until the owner settles the Lato conflict."
+
+project_blacklist: "Each project copies this file into 02_research/ and adds its own category clichés."

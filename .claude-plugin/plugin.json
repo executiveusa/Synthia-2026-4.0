@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "synthia",
+  "displayName": "Synthia™ Design Studio",
+  "version": "4.0.0-alpha.1",
+  "description": "In-house design studio: site audits, landing pages, 3D scroll-world sites and code-rendered motion videos, gated by anti-slop review and human approval.",
+  "author": { "name": "The Pauli Effect", "email": "executiveusa@gmail.com" },
+  "repository": "https://github.com/executiveusa/Synthia-2026-4.0",
+  "license": "UNLICENSED",
+  "keywords": ["design", "website", "motion", "video", "anti-slop", "icm"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

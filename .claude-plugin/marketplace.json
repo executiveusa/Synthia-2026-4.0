@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "synthia",
+  "description": "The Pauli Effect in-house design studio plugin.",
+  "owner": { "name": "The Pauli Effect", "email": "executiveusa@gmail.com" },
+  "plugins": [
+    {
+      "name": "synthia",
+      "source": "./",
+      "description": "Site audits, landing pages, 3D scroll-world sites and code-rendered motion videos with anti-slop gates.",
+      "version": "4.0.0-alpha.1",
+      "category": "design"
+    }
+  ]
+}

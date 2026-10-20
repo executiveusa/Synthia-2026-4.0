@@ -1,0 +1,24 @@
+{
+  "name": "synthia",
+  "version": "4.0.0-alpha.1",
+  "description": "In-house design studio: site audits, landing pages, 3D scroll-world sites and code-rendered motion videos, gated by anti-slop review and human approval.",
+  "author": { "name": "The Pauli Effect", "email": "executiveusa@gmail.com" },
+  "repository": "https://github.com/executiveusa/Synthia-2026-4.0",
+  "license": "UNLICENSED",
+  "keywords": ["design", "website", "motion", "video", "anti-slop", "icm"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Synthia™ Design Studio",
+    "shortDescription": "Design, motion and audits with anti-slop gates",
+    "longDescription": "Routes design work through fixed workflows: lock, inspect, research, direction, build, gauntlet, approval, deliver, learn. Nothing is delivered until The Extractor, the rubric and a human approval pass.",
+    "developerName": "The Pauli Effect",
+    "category": "Creativity",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": [
+      "Audit this website for trust and slop.",
+      "Make a 30-second launch video for this product.",
+      "Run the end-of-project gauntlet on this build."
+    ]
+  }
+}
