@@ -4,9 +4,9 @@ import path from 'node:path';
 import { spawn } from 'node:child_process';
 import { REPO_ROOT } from './helpers.js';
 
-const EXPECTED = ['motion_catalog_search', 'motion_reference_get', 'bookmarks_import', 'project_new', 'project_status', 'gauntlet_run'];
+const EXPECTED = ['motion_catalog_search', 'motion_reference_get', 'bookmarks_import', 'project_new', 'project_status', 'gauntlet_run', 'video_check'];
 
-test('MCP server starts over stdio and lists all six tools', async () => {
+test('MCP server starts over stdio and lists all seven tools', async () => {
   const serverPath = path.join(REPO_ROOT, 'mcp', 'server.js');
   const child = spawn('node', [serverPath], { stdio: ['pipe', 'pipe', 'pipe'] });
 
