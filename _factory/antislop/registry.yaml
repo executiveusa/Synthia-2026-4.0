@@ -49,6 +49,15 @@ judgment:
     - over-specified faces causing artifacts
     - text on screen too small to read on a phone
 
+  commercial:      # W7, see _factory/video/COMMERCIAL_DOCTRINE.md
+    - generated person testifying ("I use this", "changed my skin") instead of demonstrating
+    - fake reviews, star ratings, customer counts, before/after results
+    - garbled or invented text on product labels, logos or packaging
+    - hands, fingers or product geometry that change between shots
+    - hook that needs sound to make sense
+    - end card with more than one action
+    - stock "everyone smiling at a laptop" b-roll unrelated to the product
+
 review_required:   # see canon SOURCES #6 and #7 — owner decision pending
   fonts: [Inter, Roboto, Arial, Helvetica, Open Sans, Montserrat, Poppins, Lato]
   note: "Flag for review; not an automatic blocker until the owner settles the Lato conflict."

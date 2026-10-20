@@ -3,7 +3,7 @@
 
 import { parseArgs } from 'node:util';
 import { ensureCatalog, searchCatalog, getReference } from '../lib/catalog.js';
-import { projectNew, projectStatus, bookmarksImport } from '../lib/project.js';
+import { projectNew, projectStatus, bookmarksImport, resolveWorkflow } from '../lib/project.js';
 import { gauntletRun } from '../lib/gauntlet.js';
 
 const USAGE = `synthia - Synthia 4.0 studio CLI
@@ -72,10 +72,8 @@ async function main(argv) {
 
   if (area === 'new') {
     const [workflow, clientSlug] = [command, rest[0]];
-    if (!workflow || !clientSlug) fail('usage: synthia new <W1|W4> <client-slug>');
-    if (!/^W[1-6]$/.test(workflow)) fail(`unknown workflow "${workflow}" (known: W1, W4; planned: W2, W3, W5, W6)`);
-    const wfDir = { W1: 'W1-trust-audit', W4: 'W4-motion-video' }[workflow];
-    if (!wfDir) fail(`workflow ${workflow} is planned, not built: refusing until it has stage folders`);
+    if (!workflow || !clientSlug) fail('usage: synthia new <workflow, e.g. W1 or W7> <client-slug>');
+    const wfDir = await resolveWorkflow(workflow).catch((err) => fail(err.message));
     const result = await projectNew({ workflow: wfDir, clientSlug });
     console.log(`created ${result.projectPath}`);
     for (const stage of result.stages) console.log(`  ${stage}/`);

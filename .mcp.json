@@ -7,7 +7,13 @@
     "synthia": {
       "type": "stdio",
       "command": "node",
-      "args": ["mcp/server.js"]
+      "args": [
+        "mcp/server.js"
+      ]
+    },
+    "higgsfield": {
+      "type": "http",
+      "url": "https://mcp.higgsfield.ai/mcp"
     }
   }
 }
