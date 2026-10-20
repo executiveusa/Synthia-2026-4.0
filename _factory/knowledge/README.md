@@ -11,6 +11,7 @@ redistribution.
 | Jon Yablonski — Laws of UX | not yet distilled |
 | Adam Wathan & Steve Schoger — Refactoring UI | not yet distilled |
 | Nir Eyal — Hooked | not yet distilled; apply only to retention offers, never to dark patterns |
+| Kombai — Design Creativity Bench (preprint, 2026) | distilled: `design-creativity-bench.md` |
 
 Rule for each file: `principle → why → how it shows up in our work → source (book, chapter)`.
 A principle without a cited source does not go in.

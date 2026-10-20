@@ -30,6 +30,7 @@ and sells them as fixed offers. This file routes. It holds no doctrine.
 - `_factory/video/` — motion and AI-video doctrine
 - `_factory/sources/` — the owner's original protocols, verbatim
 - `_factory/knowledge/` — distilled book knowledge (in progress)
+- `_factory/learn/STRUCTURE_LOG.md` — structures already shipped; read at 03_direction to avoid repeats
 - `upstream/UPSTREAM.md` — external skills and pinned versions
 
 ## External production repos (call only when a stage contract names them)

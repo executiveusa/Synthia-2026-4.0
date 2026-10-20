@@ -85,6 +85,9 @@ Every reference goes in `02_research/LEDGER.md`:
 REFERENCE / SOURCE / WHAT IS RELEVANT / WHAT IS NOT / PRINCIPLE TO EXTRACT / COPYING RISK
 ```
 
+Collect references for **structure**, not only style: at least one reference per structural
+answer you might use in 03. References are where alternatives to the agent's default come from.
+
 Write a project cliché blacklist starting from `_factory/antislop/registry.yaml`.
 
 ## 03_direction — strategy, then three directions, then a human picks
@@ -98,8 +101,20 @@ Write a project cliché blacklist starting from `_factory/antislop/registry.yaml
 3. Brand behavior: believe / behave / refuse / feel / remember / do / governing idea.
 4. Content inventory: KEEP VERBATIM, KEEP AND REPOSITION, REWRITE WITH APPROVAL,
    REPLACE WITH EVIDENCE, REMOVE, MISSING AND REQUIRED.
-5. Three directions that differ in idea, grid, type, imagery, pacing and motion:
-   one restrained, one expressive, one experimental. All three usable.
+5. **Design-space table.** List the open structural questions for this brief and the
+   defensible answers to each. For a screen: how it is divided, which object organises it,
+   what the person sees before acting, how detail is revealed, how the main action commits.
+   For video: story logic, hook device, camera grammar, where the product enters, end-card structure.
+6. Three directions, each assigned a **different set of answers** from that table:
+   one restrained, one expressive, one experimental. All three usable. Directions that differ
+   only in colour, type, copy, icons or spacing are the same direction. Never produce the three
+   by re-running one prompt.
+7. **Sameness check.** Compare the directions with the last 10 rows of
+   `_factory/learn/STRUCTURE_LOG.md` for this offer. Same answers on every question = repeat:
+   rework or justify in writing.
+
+Why: agents meet the brief but repeat the same structure across clients
+(`_factory/knowledge/design-creativity-bench.md`).
 
 **Human check:** the owner or client picks one. Never average the three.
 
@@ -135,7 +150,10 @@ Run in a **separate session** from the builder. In order:
 4. **Council review**, each scored 0–10 with written evidence:
    customer value, Krug usability, creative direction, accessibility, technical,
    sovereignty (ownership, rollback).
-5. **Rubric** score with the offer's profile in `_factory/rubric/rubric.yaml`.
+5. **Correctness checks** from `registry.yaml` → `sameness_and_correctness`: every action the
+   lock names has a visible control; sample counts and totals add up; any value shown twice is
+   the same everywhere.
+6. **Rubric** score with the offer's profile in `_factory/rubric/rubric.yaml`.
 
 A high average never hides a critical failure. Any P0 = fail.
 
@@ -162,4 +180,5 @@ with who, what revision, and when. No approval, no delivery.
 - Case study with before/after evidence. Client permission recorded first.
 - New slop patterns found → proposed additions to `_factory/antislop/registry.yaml`.
 - Price asked, price paid, hours spent → `sales/pricing-tests.md`.
+- One row in `_factory/learn/STRUCTURE_LOG.md`: the structural answers of what shipped, no client content.
 - What slowed us down → an improvement task.
