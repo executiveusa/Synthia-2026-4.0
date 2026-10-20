@@ -9,6 +9,7 @@ import { ListToolsRequestSchema, CallToolRequestSchema } from '@modelcontextprot
 import { ensureCatalog, searchCatalog, getReference } from '../lib/catalog.js';
 import { projectNew, projectStatus, bookmarksImport, resolveWorkflow } from '../lib/project.js';
 import { gauntletRun } from '../lib/gauntlet.js';
+import { videoCheck } from '../lib/videocheck.js';
 
 export const TOOLS = [
   {
@@ -59,8 +60,22 @@ export const TOOLS = [
   },
   {
     name: 'gauntlet_run',
-    description: 'Run the-extractor over every .md/.txt in a project stage outputs (except 01_inspect), write 05_gauntlet/output/EXTRACTOR.json, fail on any high finding.',
+    description: 'Run the-extractor over every .md/.txt in a project stage outputs (except 01_inspect), write 05_gauntlet/output/EXTRACTOR.json, fail on any high finding. On W7 projects, drafts in 04_build/output/drafts/ are also video-checked (<=30 s).',
     inputSchema: { type: 'object', required: ['projectPath'], properties: { projectPath: { type: 'string' } } },
+  },
+  {
+    name: 'video_check',
+    description: 'Verify video files from the files themselves with ffprobe: duration, resolution, aspect ratio, fps, audio stream. Fails over --max-seconds, disallowed ratios, fps outside 23-60, or missing audio when required. Writes video_check.json next to the inputs. Never guesses durations; fails with an install message when ffprobe is missing.',
+    inputSchema: {
+      type: 'object',
+      required: ['path'],
+      properties: {
+        path: { type: 'string', description: 'a video file (.mp4/.mov/.webm) or a directory of them' },
+        maxSeconds: { type: 'number', description: 'maximum allowed duration in seconds (default 30)' },
+        ratios: { type: 'string', description: 'comma-separated allowed aspect ratios, e.g. "9:16,1:1,16:9"' },
+        requireAudio: { type: 'boolean' },
+      },
+    },
   },
 ];
 
@@ -88,6 +103,14 @@ export async function callTool(name, args) {
       return projectStatus({ projectPath: args?.projectPath });
     case 'gauntlet_run':
       return gauntletRun({ projectPath: args?.projectPath });
+    case 'video_check': {
+      const input = { targetPath: args?.path, requireAudio: Boolean(args?.requireAudio) };
+      if (args?.maxSeconds !== undefined) input.maxSeconds = args.maxSeconds;
+      if (args?.ratios !== undefined) {
+        input.ratios = String(args.ratios).split(',').map((r) => r.trim()).filter(Boolean);
+      }
+      return videoCheck(input);
+    }
     default:
       throw new Error(`unknown tool "${name}"`);
   }

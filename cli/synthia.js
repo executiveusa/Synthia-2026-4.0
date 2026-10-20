@@ -5,6 +5,7 @@ import { parseArgs } from 'node:util';
 import { ensureCatalog, searchCatalog, getReference } from '../lib/catalog.js';
 import { projectNew, projectStatus, bookmarksImport, resolveWorkflow } from '../lib/project.js';
 import { gauntletRun } from '../lib/gauntlet.js';
+import { videoCheck } from '../lib/videocheck.js';
 
 const USAGE = `synthia - Synthia 4.0 studio CLI
 
@@ -14,6 +15,7 @@ const USAGE = `synthia - Synthia 4.0 studio CLI
   synthia new <W1|W4> <client-slug>
   synthia status <project-path>
   synthia gauntlet <project-path>
+  synthia video check <file-or-dir> [--max-seconds 30] [--ratios 9:16,1:1,16:9] [--require-audio]
 `;
 
 function fail(message, code = 1) {
@@ -93,9 +95,55 @@ async function main(argv) {
     if (!command) fail('usage: synthia gauntlet <project-path>');
     const result = await gauntletRun({ projectPath: command });
     for (const row of result.results) console.log(`${row.pass ? 'PASS' : 'FAIL'} ${row.file}`);
+    if (result.video) {
+      for (const row of result.video.files ?? []) {
+        console.log(`${row.pass ? 'PASS' : 'FAIL'} ${row.file}${row.failures?.length ? ` - ${row.failures.join('; ')}` : ''}`);
+      }
+      if (result.video.error) console.log(`FAIL video_check - ${result.video.error}`);
+    }
     console.log(`report: ${result.reportPath}`);
-    if (!result.ok) fail(`gauntlet failed: ${result.highCount} high-severity finding(s)`, 1);
+    if (!result.ok) {
+      const why = [];
+      if (result.highCount > 0) why.push(`${result.highCount} high-severity finding(s)`);
+      if (result.video && !result.video.ok) why.push('video_check failed');
+      fail(`gauntlet failed: ${why.join(', ') || 'see report'}`, 1);
+    }
     console.log('gauntlet passed');
+    return;
+  }
+
+  if (area === 'video' && command === 'check') {
+    const { values, positionals } = parseArgs({
+      args: rest,
+      allowPositionals: true,
+      options: {
+        'max-seconds': { type: 'string' },
+        ratios: { type: 'string' },
+        'require-audio': { type: 'boolean', default: false },
+      },
+    });
+    const [target] = positionals;
+    if (!target) fail('usage: synthia video check <file-or-dir> [--max-seconds 30] [--ratios 9:16,1:1,16:9] [--require-audio]');
+    const input = {
+      targetPath: target,
+      requireAudio: values['require-audio'],
+    };
+    if (values['max-seconds'] !== undefined) {
+      const n = Number(values['max-seconds']);
+      if (!Number.isFinite(n) || n <= 0) fail(`--max-seconds must be a positive number, got "${values['max-seconds']}"`, 2);
+      input.maxSeconds = n;
+    }
+    if (values.ratios !== undefined) input.ratios = values.ratios.split(',').map((r) => r.trim()).filter(Boolean);
+    const result = await videoCheck(input);
+    for (const row of result.files) {
+      const detail = row.pass
+        ? `${row.durationSeconds}s ${row.width}x${row.height} (${row.matchedRatio}) ${row.fps}fps audio:${row.hasAudio}`
+        : row.failures.join('; ');
+      console.log(`${row.pass ? 'PASS' : 'FAIL'} ${row.file} - ${detail}`);
+    }
+    console.log(`report: ${result.reportPath}`);
+    if (!result.ok) process.exit(1);
+    console.log('video_check passed');
     return;
   }
 

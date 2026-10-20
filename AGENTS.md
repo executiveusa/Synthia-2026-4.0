@@ -39,8 +39,8 @@ and sells them as fixed offers. This file routes. It holds no doctrine.
 - Higgsfield MCP (`higgsfield` in `.mcp.json`) — UGC, video, Ads Studio, montage, variants. Load its workflow with `get_workflow_instructions` before generating.
 
 ## CLI and MCP
-- `cli/synthia.js` wraps `lib/`: motion catalog search/get/import, `new`, `status`, `gauntlet`.
-- `mcp/server.js` (stdio, `synthia` in `.mcp.json`) exposes the same six tools.
+- `cli/synthia.js` wraps `lib/`: motion catalog search/get/import, `new`, `status`, `gauntlet`, `video check` (ffprobe-verified video checks; W7 gauntlet checks `04_build` drafts, max 30 s).
+- `mcp/server.js` (stdio, `synthia` in `.mcp.json`) exposes the same seven tools (incl. `video_check`).
 - Run `npm install` once; `node --test tests/` is part of `scripts/check.sh`.
 
 ## Hard rules
