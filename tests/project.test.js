@@ -67,3 +67,14 @@ test('bookmarks_import appends 2 ledger rows and reports 1 unmatched line', asyn
   assert.equal((ledger.match(/^COPYING RISK:$/gm) ?? []).length, 2);
   assert.match(ledger, /motionvideo\.xyz/);
 });
+
+test('resolveWorkflow reads workflows from disk: short id, full name, planned and unknown', async () => {
+  const { resolveWorkflow } = await import('../lib/project.js');
+  const repo = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+  assert.equal(await resolveWorkflow('W1', repo), 'W1-trust-audit');
+  assert.equal(await resolveWorkflow('W7', repo), 'W7-commercial');
+  assert.equal(await resolveWorkflow('W7-commercial', repo), 'W7-commercial');
+  await assert.rejects(() => resolveWorkflow('W2', repo), /planned, not built/);
+  await assert.rejects(() => resolveWorkflow('W99', repo), /unknown workflow/);
+  await assert.rejects(() => resolveWorkflow('rm -rf', repo), /must look like/);
+});

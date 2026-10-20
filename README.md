@@ -14,6 +14,7 @@ rubric, and a human approval.
 | Router, doctrine, canon spine | DESIGNED |
 | W1 trust audit workflow | DESIGNED |
 | W4 motion video workflow | DESIGNED |
+| W7 social commercial (≤30 s) | DESIGNED |
 | W2, W3, W5, W6 workflows | planned |
 | MCP server and CLI | IMPLEMENTED + TESTED (`node --test`) |
 | Book knowledge distillation | planned |

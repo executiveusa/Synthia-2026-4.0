@@ -19,6 +19,7 @@ and sells them as fixed offers. This file routes. It holds no doctrine.
 | Landing page build or rebuild | `workflows/W2-landing-page/` (planned) |
 | 3D scroll-through world site | `workflows/W3-scroll-world-3d/` (planned) |
 | Mobile fix pass on an existing site | `workflows/W5-mobile-polish/` (planned) |
+| Social commercial up to 30 s (UGC, product, motion) | `workflows/W7-commercial/` |
 | Monthly social motion batch | `workflows/W6-motion-retainer/` (planned) |
 | Prospect outreach | `sales/outreach/` |
 | New client run | copy a workflow into `projects/<client>-<workflow>/` |
@@ -30,6 +31,11 @@ and sells them as fixed offers. This file routes. It holds no doctrine.
 - `_factory/sources/` — the owner's original protocols, verbatim
 - `_factory/knowledge/` — distilled book knowledge (in progress)
 - `upstream/UPSTREAM.md` — external skills and pinned versions
+
+## External production repos (call only when a stage contract names them)
+- `upstream/pauli-montage-video-agent/` — assembly, reframe, captions, Remotion composer, short-form specs. AGPLv3: run its tools, never copy its code here.
+- `upstream/buffer-blaster-/` — UGC and Higgsfield prompt playbooks, governed paid generation and publishing. Read in place.
+- Higgsfield MCP (`higgsfield` in `.mcp.json`) — UGC, video, Ads Studio, montage, variants. Load its workflow with `get_workflow_instructions` before generating.
 
 ## CLI and MCP
 - `cli/synthia.js` wraps `lib/`: motion catalog search/get/import, `new`, `status`, `gauntlet`.

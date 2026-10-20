@@ -7,7 +7,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { ListToolsRequestSchema, CallToolRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 
 import { ensureCatalog, searchCatalog, getReference } from '../lib/catalog.js';
-import { projectNew, projectStatus, bookmarksImport } from '../lib/project.js';
+import { projectNew, projectStatus, bookmarksImport, resolveWorkflow } from '../lib/project.js';
 import { gauntletRun } from '../lib/gauntlet.js';
 
 export const TOOLS = [
@@ -42,12 +42,12 @@ export const TOOLS = [
   },
   {
     name: 'project_new',
-    description: 'Copy a workflow (W1 or W4) into projects/<client-slug>-<W>/. Refuses existing targets and planned workflows.',
+    description: 'Copy a built workflow (e.g. W1, W4, W7) into projects/<client-slug>-<W>/. Workflows are read from workflows/ on disk. Refuses existing targets and planned workflows.',
     inputSchema: {
       type: 'object',
       required: ['workflow', 'clientSlug'],
       properties: {
-        workflow: { type: 'string', enum: ['W1', 'W4'] },
+        workflow: { type: 'string', pattern: '^W[0-9]+(-[a-z0-9-]+)?$' },
         clientSlug: { type: 'string' },
       },
     },
@@ -63,8 +63,6 @@ export const TOOLS = [
     inputSchema: { type: 'object', required: ['projectPath'], properties: { projectPath: { type: 'string' } } },
   },
 ];
-
-const WORKFLOW_DIRS = { W1: 'W1-trust-audit', W4: 'W4-motion-video' };
 
 export async function callTool(name, args) {
   switch (name) {
@@ -83,8 +81,7 @@ export async function callTool(name, args) {
       return bookmarksImport({ file: args?.file, projectPath: args?.project }, catalog.videos);
     }
     case 'project_new': {
-      const wfDir = WORKFLOW_DIRS[args?.workflow];
-      if (!wfDir) throw new Error(`workflow "${args?.workflow}" is planned or unknown; only W1 and W4 have stage folders`);
+      const wfDir = await resolveWorkflow(args?.workflow);
       return projectNew({ workflow: wfDir, clientSlug: args?.clientSlug });
     }
     case 'project_status':

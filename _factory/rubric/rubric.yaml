@@ -63,3 +63,24 @@ profiles:
     zero_tolerance:
       - finding without evidence
       - invented statistic or benchmark
+
+  commercial:          # W7 — social commercials up to 30 s
+    status: v0-uncalibrated   # recalibrate after 5 delivered commercials
+    weights:
+      hook: 0.15                 # first 2 s stop the scroll, sound off
+      message_clarity: 0.15      # one message, a first-time viewer can say it back
+      product_truth: 0.15        # product looks and works as it really does; claims from the allowlist only
+      visual_craft: 0.15         # framing, continuity, no AI artifacts (hands, text, product geometry)
+      brand_fit: 0.10
+      sound_captions: 0.10       # captions on every spoken word, levels, licensed music
+      platform_fit: 0.10         # safe zones, aspect ratios, upload specs
+      call_to_action: 0.10
+    zero_tolerance:
+      - longer than 30 seconds
+      - fabricated endorsement, review, rating or result
+      - claim not in the 01_inspect allowlist
+      - real person's likeness or voice without written consent
+      - missing captions on spoken words
+      - key text in a platform UI dead zone
+      - unlicensed music, font or footage
+      - AI artifact on the product (wrong label, logo, shape)

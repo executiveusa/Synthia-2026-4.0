@@ -15,3 +15,5 @@ pin refero             referodesign/refero_skill       2382e518f90096df607196b9a
 pin gauntlet-loop      robonuggets/gauntlet-loop       9b1975a1b8f01981f3f1e6b667ad3aaf907178ea
 pin pauli-scroll-world executiveusa/pauli-scroll-world 4c34e4a65763aa2dbdf445bfa554d61f93a5e8d4
 pin scroll-craft       nateherkai/scroll-craft         75d81f74e83692add18cd7a8a8e078b8a887a579
+pin pauli-montage-video-agent executiveusa/pauli-montage-video-agent cc13dfcba9e20995073d47c7108a69a5ba58af31
+pin buffer-blaster-   executiveusa/buffer-blaster-   df1327feffe8b6c439820794726a584cdbfc351c
