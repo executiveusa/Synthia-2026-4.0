@@ -1,0 +1,47 @@
+{
+  "importedAt": "2026-10-17T00:00:00.000Z",
+  "videos": [
+    {
+      "slug": "kinetic-type-reel",
+      "title": "Kinetic type launch reel",
+      "prompt": "Bold kinetic type slamming in on a black grid, sharp cuts",
+      "model": "veo-3",
+      "stack": "remotion",
+      "effort": "high",
+      "contentTags": ["kinetic type", "launch", "typography"],
+      "preview": "https://motionvideo.xyz/preview/kinetic-type-reel.mp4",
+      "video": "https://motionvideo.xyz/video/kinetic-type-reel.mp4",
+      "poster": "https://motionvideo.xyz/poster/kinetic-type-reel.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "slug": "soft-3d-product-spin",
+      "title": "Soft 3D product spin",
+      "prompt": "Pastel studio light, slow rotation, soft shadows",
+      "model": "sora-2",
+      "stack": "blender",
+      "effort": "medium",
+      "contentTags": ["product", "3d"],
+      "preview": "https://motionvideo.xyz/preview/soft-3d-product-spin.mp4",
+      "video": "https://motionvideo.xyz/video/soft-3d-product-spin.mp4",
+      "poster": "https://motionvideo.xyz/poster/soft-3d-product-spin.jpg",
+      "width": 1080,
+      "height": 1080
+    },
+    {
+      "slug": "kinetic-type-counter",
+      "title": "Animated numbers with kinetic type",
+      "prompt": "Counting numbers in mono type, snappy easing",
+      "model": "veo-3",
+      "stack": "remotion",
+      "effort": "low",
+      "contentTags": ["kinetic type", "data"],
+      "preview": "https://motionvideo.xyz/preview/kinetic-type-counter.mp4",
+      "video": "https://motionvideo.xyz/video/kinetic-type-counter.mp4",
+      "poster": "https://motionvideo.xyz/poster/kinetic-type-counter.jpg",
+      "width": 1920,
+      "height": 1080
+    }
+  ]
+}

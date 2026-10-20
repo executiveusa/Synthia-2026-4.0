@@ -39,4 +39,9 @@ if [ -f "$EX" ]; then
 else
   echo "SKIP extractor: run scripts/bootstrap.sh first"
 fi
+if [ -f package.json ]; then
+  [ -d node_modules ] || npm ci --silent
+  node --test tests/*.test.js || fail "node test suite"
+  echo "node tests ok"
+fi
 echo "ALL CHECKS PASSED"

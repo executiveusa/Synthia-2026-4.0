@@ -31,6 +31,11 @@ and sells them as fixed offers. This file routes. It holds no doctrine.
 - `_factory/knowledge/` — distilled book knowledge (in progress)
 - `upstream/UPSTREAM.md` — external skills and pinned versions
 
+## CLI and MCP
+- `cli/synthia.js` wraps `lib/`: motion catalog search/get/import, `new`, `status`, `gauntlet`.
+- `mcp/server.js` (stdio, `synthia` in `.mcp.json`) exposes the same six tools.
+- Run `npm install` once; `node --test tests/` is part of `scripts/check.sh`.
+
 ## Hard rules
 - Nothing ships until `05_gauntlet` passes and a human approves at `06_approval`.
 - The builder never approves its own work. Review runs in a separate session.

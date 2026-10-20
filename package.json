@@ -1,0 +1,19 @@
+{
+  "name": "synthia-studio",
+  "version": "4.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Synthia 4.0 CLI and MCP server: motion research catalog, project scaffolding, status and gauntlet.",
+  "bin": {
+    "synthia": "cli/synthia.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1"
+  }
+}

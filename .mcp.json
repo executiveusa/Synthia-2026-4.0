@@ -3,6 +3,11 @@
     "refero": {
       "type": "http",
       "url": "https://api.refero.design/mcp"
+    },
+    "synthia": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["mcp/server.js"]
     }
   }
 }
