@@ -1,0 +1,65 @@
+# Synthia™ rubric — one file, one profile per offer.
+# Scores are 0-10 with written evidence per category.
+# A P0 or a failed Krug gate fails the work at ANY score (see canon SOURCES #3).
+
+floor: 8.5            # overall weighted score required for release
+critical_floor: 7.0   # any single category below this fails the work
+
+profiles:
+
+  site:                # W2, W3, W5. Weights from Website Governor v1 / Collins v1.1
+    status: adopted
+    weights:
+      strategy_positioning: 0.12
+      customer_understanding: 0.08
+      content: 0.10
+      information_architecture: 0.08
+      usability: 0.14
+      visual_design: 0.12
+      originality_art_direction: 0.12
+      responsive: 0.07
+      accessibility: 0.07
+      performance_reliability: 0.05
+      conversion_proof: 0.03
+      ownership_rollback: 0.02
+    category_floors:          # in addition to the overall floor
+      usability: 8.5
+      visual_design: 8.5
+      originality_art_direction: 8.5
+      accessibility: 8.5
+      primary_action_flow: 9.0
+    zero_tolerance:
+      - P0 failure
+      - broken primary control
+      - unverified claim
+      - mobile horizontal overflow
+      - missing rollback
+      - missing owner approval
+
+  video:               # W4, W6
+    status: v0-uncalibrated   # weights are a starting point; recalibrate after 5 delivered jobs
+    weights:
+      message_clarity: 0.20      # the point lands with sound off in the first 3 seconds
+      brand_fit: 0.15
+      motion_craft: 0.20         # timing, easing, continuity, no jitter or pops
+      typography_legibility: 0.15
+      originality: 0.10
+      format_delivery: 0.10      # every ordered aspect ratio, safe areas, captions
+      truth: 0.10                # no invented claims, metrics or logos
+    zero_tolerance:
+      - unreadable text at target size on a phone
+      - invented claim, metric, logo or testimonial
+      - wrong or missing aspect ratio that was ordered
+      - unlicensed music, font or footage
+
+  audit:               # W1. Scores the report, not the client's site.
+    status: v0-uncalibrated
+    weights:
+      evidence: 0.30             # every finding has a screenshot, quote or measurement
+      prioritization: 0.20       # P0/P1/P2 ordered by impact on the primary action
+      actionability: 0.25        # each finding says what to do
+      clarity: 0.15              # a non-designer owner understands it
+      honesty: 0.10              # unknowns stated; no invented benchmarks
+    zero_tolerance:
+      - finding without evidence
+      - invented statistic or benchmark
